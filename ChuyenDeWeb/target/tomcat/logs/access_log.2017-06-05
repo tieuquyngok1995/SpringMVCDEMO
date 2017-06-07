@@ -1,0 +1,2 @@
+0:0:0:0:0:0:0:1 - - [05/Jun/2017:23:35:52 +0700] "GET /ChuyenDeWeb HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [05/Jun/2017:23:35:53 +0700] "GET /ChuyenDeWeb/ HTTP/1.1" 200 57 http-bio-8080-exec-2 70
