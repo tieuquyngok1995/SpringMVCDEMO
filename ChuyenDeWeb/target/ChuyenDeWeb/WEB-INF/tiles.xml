@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC  
+      "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+      "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <!-- Base Define -->
+    <definition name="base.definition" template="/WEB-INF/layouts/classic.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header"
+            value="/WEB-INF/basefragments/_header.jsp" />
+        <put-attribute name="menu"
+            value="/WEB-INF/basefragments/_menu.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer"
+            value="/WEB-INF/basefragments/_footer.jsp" />
+    </definition>
+
+    <!-- Home Page -->
+    <definition name="index" extends="base.definition">
+        <put-attribute name="title" value="Home Page" />
+        <put-attribute name="body"
+            value="/WEB-INF/bodyfragments/_productlist.jsp" />
+    </definition>
+
+    <!-- Login Page -->
+    <definition name="login" extends="base.definition">
+        <put-attribute name="title" value="Login Page" />
+        <put-attribute name="body"
+            value="/WEB-INF/bodyfragments/_login.jsp" />
+    </definition>
+
+    <!-- Product List Page -->
+    <definition name="productList" extends="base.definition">
+        <put-attribute name="title" value="Product List" />
+        <put-attribute name="body"
+            value="/WEB-INF/bodyfragments/_productlist.jsp" />
+    </definition>
+
+    <!-- Product List Page -->
+    <definition name="product" extends="base.definition">
+        <put-attribute name="title" value="Product" />
+        <put-attribute name="body"
+            value="/WEB-INF/bodyfragments/_product.jsp" />
+    </definition>
+
+ <!-- Product List Page -->
+    <definition name="/404" extends="base.definition">
+        <put-attribute name="title" value="404 Error" />
+        <put-attribute name="body"
+            value="/WEB-INF/bodyfragments/_404.jsp" />
+    </definition>
+
+
+</tiles-definitions>

@@ -25,8 +25,6 @@ public class CartLineInfo {
         this.quantity = quantity;
     }
  
-    public double getAmount() {
-        return this.productInfo.getPrice() * this.quantity;
-    }
+
     
 }

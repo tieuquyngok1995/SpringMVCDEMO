@@ -1,6 +1,7 @@
 package springMVC.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,6 +25,9 @@ public class Account implements Serializable {
     private boolean active;
 
     private String userRole;
+    private String sexs;
+    private Date birthday;
+    private String address;
 
     @Id
     @Column(name = "User_Name", length = 20, nullable = false)
@@ -60,6 +64,30 @@ public class Account implements Serializable {
 
     public void setUserRole(String userRole) {
         this.userRole = userRole;
+    }
+    @Column(name = "Sexs", length = 6, nullable = false)
+    public String getSexs() {
+        return sexs;
+    }
+
+    public void setSexs(String sexs) {
+        this.sexs = sexs;
+    }
+    @Column(name = "Birthdays", length = 50, nullable = false)
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+    @Column(name = "Address", length = 255, nullable = false)
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override

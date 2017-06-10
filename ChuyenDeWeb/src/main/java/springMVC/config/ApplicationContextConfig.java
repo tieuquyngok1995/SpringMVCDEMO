@@ -17,7 +17,11 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.UrlBasedViewResolver;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesView;
 
 import springMVC.dao.AccountDAO;
 import springMVC.dao.OrderDAO;
@@ -45,13 +49,24 @@ public class ApplicationContextConfig {
     }
 
     @Bean(name = "viewResolver")
-    public InternalResourceViewResolver getViewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/WEB-INF/pages/");
-        viewResolver.setSuffix(".jsp");
+    public ViewResolver getViewResolver() {
+        UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
+ 
+        // TilesView 3
+        viewResolver.setViewClass(TilesView.class);
+        
         return viewResolver;
     }
-
+    
+    @Bean(name = "tilesConfigurer")
+    public TilesConfigurer getTilesConfigurer() {
+        TilesConfigurer tilesConfigurer = new TilesConfigurer();
+ 
+        // TilesView 3
+        tilesConfigurer.setDefinitions("/WEB-INF/tiles.xml");
+ 
+        return tilesConfigurer;
+    }
     // Config for Upload.
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver multipartResolver() {

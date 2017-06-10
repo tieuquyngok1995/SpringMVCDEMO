@@ -19,9 +19,11 @@ public class Product implements Serializable {
  
     private String code;
     private String name;
-    private double price;
     private byte[] image;
- 
+    private String describe;
+    private String addres;
+    private String status;
+    private String type;
     // For sort.
     private Date createDate;
  
@@ -47,14 +49,7 @@ public class Product implements Serializable {
         this.name = name;
     }
  
-    @Column(name = "Price", nullable = false)
-    public double getPrice() {
-        return price;
-    }
- 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+
  
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "Create_Date", nullable = false)
@@ -74,6 +69,38 @@ public class Product implements Serializable {
  
     public void setImage(byte[] image) {
         this.image = image;
+    }
+    @Column(name = "Describe", length = 255, nullable = false)
+    public String getDescribe() {
+        return describe;
+    }
+
+    public void setDescribe(String describe) {
+        this.describe = describe;
+    }
+    @Column(name = "Addres", length = 255, nullable = false)
+    public String getAddres() {
+        return addres;
+    }
+
+    public void setAddres(String addres) {
+        this.addres = addres;
+    }
+    @Column(name = "Status", length = 30, nullable = false)
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    @Column(name = "Type", length = 255, nullable = false)
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
  
 }

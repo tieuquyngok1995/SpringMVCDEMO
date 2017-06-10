@@ -35,7 +35,7 @@ public class ProductDAOImpl implements ProductDAO {
         if (product == null) {
             return null;
         }
-        return new ProductInfo(product.getCode(), product.getName(), product.getPrice());
+        return new ProductInfo(product.getCode(), product.getName(),product.getAddres(),product.getDescribe(),product.getStatus(),product.getType());
     }
  
  
@@ -55,7 +55,10 @@ public class ProductDAOImpl implements ProductDAO {
         }
         product.setCode(code);
         product.setName(productInfo.getName());
-        product.setPrice(productInfo.getPrice());
+        product.setAddres(productInfo.getAddres());
+        product.setDescribe(productInfo.getDescribe());
+        product.setStatus(productInfo.getStatus());
+        product.setType(productInfo.getType());
  
         if (productInfo.getFileData() != null) {
             byte[] image = productInfo.getFileData().getBytes();
@@ -75,7 +78,7 @@ public class ProductDAOImpl implements ProductDAO {
     public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage,
             String likeName) {
         String sql = "Select new " + ProductInfo.class.getName() //
-                + "(p.code, p.name, p.price) " + " from "//
+                + "(p.code, p.name,p.describe,p.addres,p.status,p.type) " + " from "//
                 + Product.class.getName() + " p ";
         if (likeName != null && likeName.length() > 0) {
             sql += " Where lower(p.name) like :likeName ";

@@ -70,9 +70,9 @@ public class MainController {
  
    }
  
-   @RequestMapping("/403")
+   @RequestMapping("/404")
    public String accessDenied() {
-       return "/403";
+       return "/404";
    }
  
    @RequestMapping("/")
@@ -81,7 +81,7 @@ public class MainController {
    }
  
   
-   // Danh sách sản phẩm.
+//    Danh sách sản phẩm.
    @RequestMapping({ "/productList" })
    public String listProductHandler(Model model, //
            @RequestParam(value = "name", defaultValue = "") String likeName,
@@ -307,5 +307,8 @@ public class MainController {
        }
        response.getOutputStream().close();
    }
-    
+   @RequestMapping(value = "/staticResourceTest")
+   public String staticResource(Model model) {
+       return "staticResourceTest";
+   }
 }
