@@ -378,10 +378,24 @@ section #services li:hover {
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
+#filter-container figure figcaption .addres {
+    margin-bottom: 13px;
+    font-size: 16px;
+    line-height: 1.2em;
+    text-transform: uppercase;
+    display: block;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
 
 #filter-container figure figcaption .readmore {
     display: block;
     margin: 10px 0px;
+}
+#filter-container figure .btn-success{
+  margin: -10px 10px 5px 10px;
 }
 /*********************************content slide anh va thong tin tom tat*************************************/
 .preview {

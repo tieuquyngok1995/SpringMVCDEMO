@@ -1,14 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
- 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
 
-  
-   <fmt:setLocale value="en_US" scope="session"/>
- 
-   <div class="page-title">Product List</div>
- 
+
+
+<fmt:setLocale value="en_US" scope="session" />
+
+
 <div class="banner_home">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -310,11 +309,12 @@
                     <div class="home-featured">
                         <div class="menu-scoll-3" id="menu-scolling-3">
                             <ul id="filter-buttons" class="home-menu-filter">
-                                <li><a href="#" data-filter="*" class="selected">MỚI NHẤT</a></li>
-                                <li><a href="#" data-filter=".web">TOP TUẦN</a></li>
-                                <li><a href="#" data-filter=".print">TOP THÁNG</a></li>
-                                <li><a href="#" data-filter=".design">GIẢM GIÁ</a></li>
-                                <li><a href="#" data-filter=".photo">KHUYẾN MÃI</a></li>
+                                <li><a href="#" data-filter=".moinhat" class="selected">MỚI
+                                        NHẤT</a></li>
+                                <li><a href="#" data-filter=".toptuan">TOP TUẦN</a></li>
+                                <li><a href="#" data-filter=".topthang">TOP THÁNG</a></li>
+                                <li><a href="#" data-filter=".giamgia">GIẢM GIÁ</a></li>
+                                <li><a href="#" data-filter=".khuyenmai">KHUYẾN MÃI</a></li>
                             </ul>
                         </div>
                         <!-- Filter container -->
@@ -328,7 +328,14 @@
                                     egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
                                     tempor sit amet, ante. Donec eu libero sit amet quam egestas
                                     semper. Aenean ultricies mi vitae est.
+
+
                                 </figcaption>
+                                <h6 class="heading">Địa chỉ:</h6>
+                                <a href="#" class="btn btn-success"><span
+                                    class="glyphicon glyphicon-check"></span> Đặt Chổ</a>
+                                <a class="btn btn-success"><span
+                                    class="glyphicon glyphicon-unchecked"></span> Còn Chổ</a>
                             </figure>
 
                             <figure class="print col-md-3">
@@ -342,33 +349,35 @@
                                     quam egestas semper. Aenean ultricies mi vitae est.
                                 </figcaption>
                             </figure>
-   <c:forEach items="${paginationProducts.list}" var="prodInfo">
-<figure class="${prodInfo.type} col-md-3">
-                                <a href="project.html" class="thumb"><img
-                                    src="<c:url value='/resources/img/${prodInfo.code}.jpg' />" alt="alt" /></a>
-                                <figcaption>
-                                    <a href="project.html"><h3 class="heading">${prodInfo.name}</h3></a> 
-                                     des:  ${prodInfo.describe}
-                                      add: ${prodInfo.addres}
-             <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Đặt Chổ</a> 
-             <a class="btn btn-success"><span class="glyphicon glyphicon-unchecked"></span> ${prodInfo.status}</a>
-              <li><a
-                   href="${pageContext.request.contextPath}/buyProduct?code=${prodInfo.code}">
-                       Buy Now</a></li>
-               <!-- For Manager edit Product -->
-               <security:authorize  access="hasRole('ROLE_MANAGER')">
-                 <li><a style="color:red;"
-                     href="${pageContext.request.contextPath}/product?code=${prodInfo.code}">
-                       Edit Product</a></li>
-               </security:authorize>
-                                </figcaption>
-                            </figure>
-                              </c:forEach>
+                            <c:forEach items="${paginationProducts.list}" var="prodInfo">
+                                <figure class="${prodInfo.type} col-md-3">
+                                    <a href="project.html" class="thumb"><img
+                                        src="<c:url value='/resources/img/${prodInfo.code}.jpg' />"
+                                        alt="alt" /></a>
+                                    <figcaption>
+                                        <a href="project.html"><h3 class="heading">${prodInfo.name}</h3></a>
+                                        <p>${prodInfo.describe}</p>       
+                                     <a href="#"> <h5 class="addres">Địa chỉ: ${prodInfo.addres}</h5></a>
+                                    </figcaption>
+                                    
+                                       <a href="${pageContext.request.contextPath}/buyProduct?code=${prodInfo.code}" class="btn btn-success"><span
+                                            class="glyphicon glyphicon-check"></span> Đặt Chổ</a> <a
+                                            class="btn btn-success"><span
+                                            class="glyphicon glyphicon-unchecked"></span>
+                                            ${prodInfo.status}</a>
+                                              <!-- For Manager edit Product -->
+                                        <security:authorize access="hasRole('ROLE_MANAGER')">
+                                            <li><a style="color: red;"
+                                                href="${pageContext.request.contextPath}/product?code=${prodInfo.code}">
+                                                    Edit Product</a></li>
+                                        </security:authorize>
+                                </figure>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-      
+
     </div>
 </div>

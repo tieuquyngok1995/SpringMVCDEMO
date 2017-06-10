@@ -75,14 +75,14 @@ public class MainController {
        return "/404";
    }
  
-   @RequestMapping("/")
-   public String home() {
-       return "index";
-   }
+//   @RequestMapping("/")
+//   public String home() {
+//       return "index";
+//   }
  
   
 //    Danh sách sản phẩm.
-   @RequestMapping({ "/productList" })
+   @RequestMapping({ "/" })
    public String listProductHandler(Model model, //
            @RequestParam(value = "name", defaultValue = "") String likeName,
            @RequestParam(value = "page", defaultValue = "1") int page) {
@@ -93,7 +93,7 @@ public class MainController {
                maxResult, maxNavigationPage, likeName);
  
        model.addAttribute("paginationProducts", result);
-       return "productList";
+       return "index";
    }
  
    @RequestMapping({ "/buyProduct" })

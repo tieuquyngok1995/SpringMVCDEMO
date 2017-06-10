@@ -7,7 +7,6 @@
 
 <fmt:setLocale value="en_US" scope="session" />
 
-<div class="page-title">Product List</div>
 
 <div class="banner_home">
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
