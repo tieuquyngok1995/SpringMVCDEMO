@@ -1,2 +1,3 @@
 eclipse.preferences.version=1
-encoding//src/main/webapp/WEB-INF/bodyfragments/_productList.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/bodyfragments/_accountInfo.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/bodyfragments/_shoppingCart.jsp=UTF-8

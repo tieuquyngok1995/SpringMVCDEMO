@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div class="jain_container">
+
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <!-- role dung de neo cac tab -->
 
@@ -81,7 +81,7 @@
                     <!-- menu drop -->
                     <div class="col-md-12">
                         <ul class="nav navbar-nav">
-                            <li><a href="#">Đặt Chổ Trực Tuyến</a></li>
+                            <li><a href="${pageContext.request.contextPath}/shoppingCart">Đặt Chổ Trực Tuyến</a></li>
                             <li><a href="#">Sự Kiện</a></li>
                             <li><a href="#">Khuyến Mãi / Giảm Giá</a></li>
                             <li><a href="#">Thông Tin Hỗ Trợ</a></li>
@@ -124,4 +124,3 @@
 
         </div>
     </nav>
-</div>

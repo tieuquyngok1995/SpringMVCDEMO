@@ -54,7 +54,7 @@ public class OrderDAOImpl implements OrderDAO {
         order.setId(UUID.randomUUID().toString());
         order.setOrderNum(orderNum);
         order.setOrderDate(new Date());
-        order.setAmount(cartInfo.getAmountTotal());
+
  
         CustomerInfo customerInfo = cartInfo.getCustomerInfo();
         order.setCustomerName(customerInfo.getName());
@@ -70,8 +70,7 @@ public class OrderDAOImpl implements OrderDAO {
             OrderDetail detail = new OrderDetail();
             detail.setId(UUID.randomUUID().toString());
             detail.setOrder(order);
-            detail.setAmount(line.getAmount());
-            detail.setPrice(line.getProductInfo().getPrice());
+
             detail.setQuanity(line.getQuantity());
  
             String code = line.getProductInfo().getCode();

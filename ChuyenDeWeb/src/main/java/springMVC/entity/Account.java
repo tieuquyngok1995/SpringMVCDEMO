@@ -25,8 +25,11 @@ public class Account implements Serializable {
     private boolean active;
 
     private String userRole;
+
     private String sexs;
+
     private Date birthday;
+
     private String address;
 
     @Id
@@ -65,6 +68,7 @@ public class Account implements Serializable {
     public void setUserRole(String userRole) {
         this.userRole = userRole;
     }
+
     @Column(name = "Sexs", length = 6, nullable = false)
     public String getSexs() {
         return sexs;
@@ -73,6 +77,7 @@ public class Account implements Serializable {
     public void setSexs(String sexs) {
         this.sexs = sexs;
     }
+
     @Column(name = "Birthdays", length = 50, nullable = false)
     public Date getBirthday() {
         return birthday;
@@ -81,6 +86,7 @@ public class Account implements Serializable {
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
+
     @Column(name = "Address", length = 255, nullable = false)
     public String getAddress() {
         return address;

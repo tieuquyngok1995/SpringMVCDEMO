@@ -342,7 +342,7 @@
                                 <a href="project.html" class="thumb"><img
                                     src="img/dummies/featured/02.jpg" alt="alt" /></a>
                                 <figcaption>
-                                    <a href="project.html"><h3 class="heading">Pellentesque
+                                    <a href="${pageContext.request.contextPath}/"><h3 class="heading">Pellentesque
                                             habitant morbi</h3></a> Tristique senectus et netus et malesuada
                                     fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae,
                                     ultricies eget, tempor sit amet, ante. Donec eu libero sit amet
@@ -351,7 +351,7 @@
                             </figure>
                             <c:forEach items="${paginationProducts.list}" var="prodInfo">
                                 <figure class="${prodInfo.type} col-md-3">
-                                    <a href="project.html" class="thumb"><img
+                                    <a href="${pageContext.request.contextPath}/" class="thumb"><img
                                         src="<c:url value='/resources/img/${prodInfo.code}.jpg' />"
                                         alt="alt" /></a>
                                     <figcaption>
@@ -367,9 +367,9 @@
                                             ${prodInfo.status}</a>
                                               <!-- For Manager edit Product -->
                                         <security:authorize access="hasRole('ROLE_MANAGER')">
-                                            <li><a style="color: red;"
-                                                href="${pageContext.request.contextPath}/product?code=${prodInfo.code}">
-                                                    Edit Product</a></li>
+                                           <a  href="${pageContext.request.contextPath}/product?code=${prodInfo.code}" 
+                                            class="btn btn-block btn-danger">
+                                            <span class="glyphicon glyphicon-check"></span> Edit Product</a>
                                         </security:authorize>
                                 </figure>
                             </c:forEach>

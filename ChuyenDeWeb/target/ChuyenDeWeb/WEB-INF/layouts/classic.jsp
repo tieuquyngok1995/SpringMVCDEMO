@@ -61,10 +61,17 @@
 <script src="<c:url value='/resources/js/jquery.flexslider.js' />"></script>
 </head>
 <body>
+<div class="jain_container">
     <tiles:insertAttribute name="header" />
-    <tiles:insertAttribute name="body" />
+ <div class="container-fluid">
+    <div class="row">
+        
+        <tiles:insertAttribute name="body" />
+        <tiles:insertAttribute name="menu" />
+    </div>
+ </div>
     <tiles:insertAttribute name="footer" />
-
+</div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

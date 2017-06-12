@@ -27,15 +27,13 @@ public class ProductInfo {
     public ProductInfo(Product product) {
         this.code = product.getCode();
         this.name = product.getName();
+        this.describe = product.getDescribe();
+        this.addres = product.getAddres();
+        
     }
 
     // Không thay đổi Constructor này,
     // nó được sử dụng trong Hibernate query.
-
-    public String getCode() {
-        return code;
-    }
-
     public ProductInfo(String code, String name, String describe, String addres,
             String status, String type) {
         super();
@@ -46,6 +44,11 @@ public class ProductInfo {
         this.status = status;
         this.type = type;
     }
+    public String getCode() {
+        return code;
+    }
+
+    
 
     public void setCode(String code) {
         this.code = code;

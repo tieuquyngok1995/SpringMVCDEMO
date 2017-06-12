@@ -20,7 +20,7 @@
     <definition name="index" extends="base.definition">
         <put-attribute name="title" value="Home Page" />
         <put-attribute name="body"
-            value="/WEB-INF/bodyfragments/_productList.jsp" />
+            value="/WEB-INF/bodyfragments/_index.jsp" />
     </definition>
 
     <!-- Login Page -->
@@ -30,21 +30,43 @@
             value="/WEB-INF/bodyfragments/_login.jsp" />
     </definition>
 
-<!--     Product List Page -->
-<!--     <definition name="productList" extends="base.definition">
+    <!-- Product List Page -->
+    <definition name="productList" extends="base.definition">
         <put-attribute name="title" value="Product List" />
         <put-attribute name="body"
             value="/WEB-INF/bodyfragments/_productList.jsp" />
-    </definition> -->
+    </definition>
 
-    <!-- Product List Page -->
+    <!-- Product Page -->
     <definition name="product" extends="base.definition">
         <put-attribute name="title" value="Product" />
         <put-attribute name="body"
             value="/WEB-INF/bodyfragments/_product.jsp" />
     </definition>
 
- <!-- Product List Page -->
+    <!-- Account info Page -->
+    <definition name="accountInfo" extends="base.definition">
+        <put-attribute name="title" value="Account info" />
+        <put-attribute name="body"
+            value="/WEB-INF/bodyfragments/_accountInfo.jsp" />
+    </definition>
+
+    <!-- Shoping Cart Page -->
+    <definition name="shoppingCart" extends="base.definition">
+        <put-attribute name="title" value="Shopping Cart" />
+        <put-attribute name="body"
+            value="/WEB-INF/bodyfragments/_shoppingCart.jsp" />
+    </definition>
+    
+
+
+    <!-- Product View Page -->
+    <definition name="productview" extends="base.definition">
+        <put-attribute name="title" value="Shopping Cart" />
+        <put-attribute name="body"
+            value="/WEB-INF/bodyfragments/_productview.jsp" />
+    </definition>
+    <!-- Product List Page -->
     <definition name="/404" extends="base.definition">
         <put-attribute name="title" value="404 Error" />
         <put-attribute name="body"

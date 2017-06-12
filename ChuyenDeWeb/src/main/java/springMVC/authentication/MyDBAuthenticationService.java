@@ -32,11 +32,14 @@ public class MyDBAuthenticationService implements UserDetailsService {
  
         // EMPLOYEE,MANAGER,..
         String role = account.getUserRole();
+//        String a = account.getAddress();
         List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
  
         // ROLE_EMPLOYEE, ROLE_MANAGER
         GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + role);
+      
         grantList.add(authority);
+    
  
         boolean enabled = account.isActive();
         boolean accountNonExpired = true;
