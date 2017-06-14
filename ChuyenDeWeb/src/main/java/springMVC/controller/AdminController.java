@@ -1,5 +1,6 @@
 package springMVC.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import springMVC.dao.OrderDAO;
@@ -26,9 +27,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
- 
+
 @Controller
 // Enable Hibernate Transaction.
 // Cần thiết cho Hibernate Transaction.
@@ -37,21 +39,21 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 // Cần thiết để sử dụng RedirectAttributes
 @EnableWebMvc
 public class AdminController {
- 
+
     @Autowired
     private OrderDAO orderDAO;
- 
+
     @Autowired
     private ProductDAO productDAO;
- 
+
     @Autowired
     private ProductInfoValidator productInfoValidator;
- 
+
     // Configurated In ApplicationContextConfig.
     // Đã cấu hình trong ApplicationContextConfig
     @Autowired
     private ResourceBundleMessageSource messageSource;
- 
+
     @InitBinder
     public void myInitBinder(WebDataBinder dataBinder) {
         Object target = dataBinder.getTarget();
@@ -59,32 +61,34 @@ public class AdminController {
             return;
         }
         System.out.println("Target=" + target);
- 
+
         if (target.getClass() == ProductInfo.class) {
             dataBinder.setValidator(productInfoValidator);
             // For upload Image.
             // Sử dụng cho upload Image.
-            dataBinder.registerCustomEditor(byte[].class, new ByteArrayMultipartFileEditor());
+            dataBinder.registerCustomEditor(byte[].class,
+                    new ByteArrayMultipartFileEditor());
         }
     }
- 
+
     // GET: Show Login Page
     // GET: Hiển thị trang login
     @RequestMapping(value = { "/login" }, method = RequestMethod.GET)
     public String login(Model model) {
- 
+
         return "login";
     }
- 
+
     @RequestMapping(value = { "/accountInfo" }, method = RequestMethod.GET)
     public String accountInfo(Model model) {
- 
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        UserDetails userDetails = (UserDetails) SecurityContextHolder
+                .getContext().getAuthentication().getPrincipal();
         System.out.println(userDetails.getPassword());
         System.out.println(userDetails.getUsername());
 
-     System.out.println(userDetails.isEnabled());
- 
+        System.out.println(userDetails.isEnabled());
+
         model.addAttribute("userDetails", userDetails);
         return "accountInfo";
     }
@@ -99,20 +103,21 @@ public class AdminController {
         }
         final int MAX_RESULT = 5;
         final int MAX_NAVIGATION_PAGE = 10;
- 
+
         PaginationResult<OrderInfo> paginationResult //
-        = orderDAO.listOrderInfo(page, MAX_RESULT, MAX_NAVIGATION_PAGE);
- 
+                = orderDAO.listOrderInfo(page, MAX_RESULT, MAX_NAVIGATION_PAGE);
+
         model.addAttribute("paginationResult", paginationResult);
         return "orderList";
     }
- 
+
     // GET: Show product.
     // GET: Hiển thị product
     @RequestMapping(value = { "/product" }, method = RequestMethod.GET)
-    public String product(Model model, @RequestParam(value = "code", defaultValue = "") String code) {
+    public String product(Model model,
+            @RequestParam(value = "code", defaultValue = "") String code) {
         ProductInfo productInfo = null;
- 
+
         if (code != null && code.length() > 0) {
             productInfo = productDAO.findProductInfo(code);
         }
@@ -123,11 +128,18 @@ public class AdminController {
         model.addAttribute("productForm", productInfo);
         return "product";
     }
-    @RequestMapping(value = { "/productview" }, method = RequestMethod.GET)
-    public String producView(Model model) {
-        return "productview";
+
+    @RequestMapping(value = { "/productFind" }, method = RequestMethod.GET)
+    public String productFind(Model model,
+            @RequestParam(value = "code", defaultValue = "") String code) {
+        ProductInfo productInfo = null;
+
+        productInfo = productDAO.findProductInfo(code);
+
+        model.addAttribute("productForm", productInfo);
+        return "productFind";
     }
- 
+
     // POST: Save product
     @RequestMapping(value = { "/product" }, method = RequestMethod.POST)
     // Avoid UnexpectedRollbackException (See more explanations)
@@ -137,7 +149,7 @@ public class AdminController {
             @ModelAttribute("productForm") @Validated ProductInfo productInfo, //
             BindingResult result, //
             final RedirectAttributes redirectAttributes) {
- 
+
         if (result.hasErrors()) {
             return "product";
         }
@@ -150,13 +162,14 @@ public class AdminController {
             model.addAttribute("message", message);
             // Show product form.
             return "product";
- 
+
         }
         return "redirect:/productList";
     }
- 
+
     @RequestMapping(value = { "/order" }, method = RequestMethod.GET)
-    public String orderView(Model model, @RequestParam("orderId") String orderId) {
+    public String orderView(Model model,
+            @RequestParam("orderId") String orderId) {
         OrderInfo orderInfo = null;
         if (orderId != null) {
             orderInfo = this.orderDAO.getOrderInfo(orderId);
@@ -164,11 +177,13 @@ public class AdminController {
         if (orderInfo == null) {
             return "redirect:/orderList";
         }
-        List<OrderDetailInfo> details = this.orderDAO.listOrderDetailInfos(orderId);
+        List<OrderDetailInfo> details = this.orderDAO
+                .listOrderDetailInfos(orderId);
         orderInfo.setDetails(details);
- 
+
         model.addAttribute("orderInfo", orderInfo);
- 
+
         return "order";
     }
+
 }

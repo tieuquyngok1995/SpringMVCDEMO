@@ -57,9 +57,39 @@
         <put-attribute name="body"
             value="/WEB-INF/bodyfragments/_shoppingCart.jsp" />
     </definition>
-    
 
+    <!-- Shoping Cart Customer Page -->
+    <definition name="shoppingCartCustomer" extends="base.definition">
+        <put-attribute name="title" value="Shopping Cart Customer" />
+        <put-attribute name="body"
+            value="/WEB-INF/bodyfragments/_shoppingCartCustomer.jsp" />
+    </definition>
 
+    <!-- Shoping Cart Confirmation Page -->
+    <definition name="shoppingCartConfirmation" extends="base.definition">
+        <put-attribute name="title" value="Shopping Cart Confirmation" />
+        <put-attribute name="body"
+            value="/WEB-INF/bodyfragments/_shoppingCartConfirmation.jsp" />
+    </definition>
+
+ <!-- Shoping Cart Finalize Page -->
+    <definition name="shoppingCartFinalize" extends="base.definition">
+        <put-attribute name="title" value="Shopping Cart Finalize" />
+        <put-attribute name="body"
+            value="/WEB-INF/bodyfragments/_shoppingCartFinalize.jsp" />
+    </definition>
+<!-- Order Page -->
+    <definition name="order" extends="base.definition">
+        <put-attribute name="title" value="Shopping Cart Finalize" />
+        <put-attribute name="body"
+            value="/WEB-INF/bodyfragments/_order.jsp" />
+    </definition>
+    <!-- Order List Page -->
+    <definition name="orderList" extends="base.definition">
+        <put-attribute name="title" value="Shopping Cart Finalize" />
+        <put-attribute name="body"
+            value="/WEB-INF/bodyfragments/_orderList.jsp" />
+    </definition>
     <!-- Product View Page -->
     <definition name="productview" extends="base.definition">
         <put-attribute name="title" value="Shopping Cart" />

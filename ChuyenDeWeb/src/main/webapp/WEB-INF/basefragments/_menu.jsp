@@ -30,7 +30,7 @@
               <div class="panel-body-menu">
                 <table class="table">
                     <tr><td><span class="glyphicon glyphicon-compressed text-primary"></span><a href="#">Nhà hàng</a> 
-                    <span class="label label-success">$ 320</span></td></tr>
+                    </td></tr>
                     <tr><td><span class="glyphicon glyphicon-road text-success"></span><a href="#">Vỉa hè</a></td></tr>
                     <tr><td><span class="fa fa-apple text-warning"></span><a href="#">Ăn vặt</a></td></tr>
                     <tr><td><span class="fa fa-beer text-danger"></span><a href="#">Thức uống</a></td></tr>
@@ -52,7 +52,7 @@
                 <div class="panel-body-menu">
                   <table class="table">
                     <tr><td><span class="fa fa-home text-primary"></span><a href="#">Khách sạn</a> 
-                    <span class="label label-success">$ 320</span></td></tr>
+                  </td></tr>
                     <tr><td><span class="fa fa-rebel text-success"></span><a href="#">Nhà nghĩ</a></td></tr>
                     <tr><td><span class="fa fa-map-marker text-warning"></span><a href="#">Khu du lịch</a></td></tr>
                     <tr><td><span class="fa fa-binoculars text-danger"></span><a href="#">Khu nghĩ dưỡng</a></td></tr>
@@ -73,7 +73,7 @@
                 <div class="panel-body-menu">
                   <table class="table">
                     <tr><td><span class="fa fa-microphone-slash text-primary"></span><a href="#">Karaoke</a> 
-                    <span class="label label-success">$ 320</span></td></tr>
+                    </td></tr>
                     <tr><td><span class="fa fa-film text-success"></span><a href="#">Rạp chiếu phim</a></td></tr>
                     <tr><td><span class="fa fa-video-camera text-warning"></span><a href="#">Sân khấu</a></td></tr>
                     <tr><td><span class="fa fa-gamepad text-danger"></span><a href="#">Khu chơi game</a></td></tr>
@@ -94,7 +94,7 @@
                 <div class="panel-body-menu">
                   <table class="table">
                     <tr><td><span class="fa fa-truck text-primary"></span><a href="#">Vận tải</a> 
-                    <span class="label label-success">$ 320</span></td></tr>
+                    </td></tr>
                     <tr><td><span class="fa fa-leaf text-success"></span><a href="#">Lều bạt</a></td></tr>
                     <tr><td><span class="fa fa-map text-warning"></span><a href="#">Đồ phượt</a></td></tr>
                     <tr><td><span class="fa fa-street-view text-danger"></span><a href="#">Hướng dẫn viên</a></td></tr>
@@ -115,13 +115,11 @@
                 <div class="panel-body-menu">
                   <table class="table">
                   <security:authorize access="hasAnyRole('ROLE_MANAGER','ROLE_EMPLOYEE')"> 
-                    <tr><td><span class="fa fa-history"></span><a href="#">Lịch sử đặt chổ</a> 
+                    <tr><td><span class="fa fa-history"></span><a href="${pageContext.request.contextPath}/orderList">Lịch sử đặt chổ</a> 
                     </td></tr>
                   </security:authorize>
                   <security:authorize access="hasRole('ROLE_MANAGER')">
-                    <tr><td><span class="fa fa-plus-square-o"></span><a href="#">Thêm sản phẩm</a></td></tr>
-                  <!--   <tr><td><span class="fa fa-map text-warning"></span><a href="#">Đồ phượt</a></td></tr>
-                    <tr><td><span class="fa fa-street-view text-danger"></span><a href="#">Hướng dẫn viên</a></td></tr> -->
+                    <tr><td><span class="fa fa-plus-square-o"></span><a href="${pageContext.request.contextPath}/product">Thêm sản phẩm</a></td></tr>
                   </security:authorize>
                   </table>
                 </div>

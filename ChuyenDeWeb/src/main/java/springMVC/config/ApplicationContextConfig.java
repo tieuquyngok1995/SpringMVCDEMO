@@ -1,5 +1,7 @@
 package springMVC.config;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -16,7 +18,11 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
@@ -47,11 +53,14 @@ public class ApplicationContextConfig {
         rb.setBasenames(new String[] { "messages/validator" });
         return rb;
     }
-
+//Tiles API
     @Bean(name = "viewResolver")
     public ViewResolver getViewResolver() {
         UrlBasedViewResolver viewResolver = new UrlBasedViewResolver();
- 
+//        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+//        resolver.setPrefix("/WEB-INF/jsp/");
+//        resolver.setSuffix(".jsp");
+//        return resolver;
         // TilesView 3
         viewResolver.setViewClass(TilesView.class);
         
@@ -121,6 +130,8 @@ public class ApplicationContextConfig {
         return sf;
     }
 
+
+    
     @Autowired
     @Bean(name = "transactionManager")
     public HibernateTransactionManager getTransactionManager(

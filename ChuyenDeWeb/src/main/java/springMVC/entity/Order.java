@@ -22,8 +22,6 @@ public class Order implements Serializable {
 
     private int orderNum;
 
-    private double amount;
-
     private String customerName;
 
     private String customerAddress;
@@ -58,15 +56,6 @@ public class Order implements Serializable {
 
     public void setOrderNum(int orderNum) {
         this.orderNum = orderNum;
-    }
-
-    @Column(name = "Amount", nullable = false)
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
     }
 
     @Column(name = "Customer_Name", length = 255, nullable = false)

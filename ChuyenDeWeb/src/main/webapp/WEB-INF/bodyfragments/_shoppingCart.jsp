@@ -44,10 +44,9 @@
                                 </cite></small> <br /> <i class="glyphicon glyphicon-list-alt"></i>${cartLineInfo.productInfo.describe}
                                 <br /> <i class="glyphicon glyphicon-globe"></i><a
                                     href="http://www.jquery2dotnet.com">${cartLineInfo.productInfo.addres}</a>
-                                <br /> <i
-                                    href="${pageContext.request.contextPath}/shoppingCartRemoveProduct?code=${cartLineInfo.productInfo.code}"
-                                    class="btn btn-block btn-danger"><span
-                                    class="glyphicon glyphicon-ban-circle"></span> Delete Cart</i>
+                                <br /> <a href="${pageContext.request.contextPath}/shoppingCartRemoveProduct?code=${cartLineInfo.productInfo.code}"><i
+                                     class="btn btn-block btn-danger"><span
+                                    class="glyphicon glyphicon-ban-circle"></span> Delete Cart</i></a>
                                 <!-- Split button -->
 
                             </div>
@@ -59,13 +58,13 @@
 
             </c:forEach>
         </form:form>
-        <div class="col-xs-12 col-sm-12 col-md-12"> 
-        <div class="btn-group">
-            <a href="${pageContext.request.contextPath}/shoppingCartCustomer"
-                " class="btn btn-success"><span class="glyphicon glyphicon-ok-circle"></span>
-                Thanh Toán</a> <a href="${pageContext.request.contextPath}/" class="btn btn-warning"><span
-                class="glyphicon glyphicon-pencil"></span> Tiếp Tục</a>
-        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="btn-group">
+                <a href="${pageContext.request.contextPath}/shoppingCartCustomer"
+                    " class="btn btn-success"><span class="glyphicon glyphicon-ok-circle"></span>
+                    Thanh Toán</a> <a href="${pageContext.request.contextPath}/" class="btn btn-warning"><span
+                    class="glyphicon glyphicon-pencil"></span> Tiếp Tục</a>
+            </div>
         </div>
     </c:if>
 

@@ -49,16 +49,10 @@ public class CartInfo {
  
         if (line == null) {
             line = new CartLineInfo();
-            line.setQuantity(0);
             line.setProductInfo(productInfo);
             this.cartLines.add(line);
         }
-        int newQuantity = line.getQuantity() + quantity;
-        if (newQuantity <= 0) {
-            this.cartLines.remove(line);
-        } else {
-            line.setQuantity(newQuantity);
-        }
+        
     }
  
     public void validate() {
@@ -68,13 +62,7 @@ public class CartInfo {
     public void updateProduct(String code, int quantity) {
         CartLineInfo line = this.findLineByCode(code);
  
-        if (line != null) {
-            if (quantity <= 0) {
-                this.cartLines.remove(line);
-            } else {
-                line.setQuantity(quantity);
-            }
-        }
+     
     }
  
     public void removeProduct(ProductInfo productInfo) {

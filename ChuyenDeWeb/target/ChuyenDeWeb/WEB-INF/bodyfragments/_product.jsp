@@ -3,7 +3,8 @@
  
 
  
-   <div class="page-title">Product</div>
+  <div class="noname"></div>
+<div class="col-sm-10 col-md-10">
   
    <c:if test="${not empty errorMessage }">
      <div class="error-message">
@@ -33,12 +34,12 @@
                <td><form:input path="name" /></td>
                <td><form:errors path="name" class="error-message" /></td>
            </tr>
- 
-           <tr>
-               <td>Price *</td>
-               <td><form:input path="price" /></td>
-               <td><form:errors path="price" class="error-message" /></td>
+            <tr>
+               <td>Name *</td>
+               <td><form:input path="addres" /></td>
+               <td><form:errors path="addres" class="error-message" /></td>
            </tr>
+           
            <tr>
                <td>Image</td>
                <td>
@@ -59,4 +60,4 @@
            </tr>
        </table>
    </form:form>
- 
+ </div>

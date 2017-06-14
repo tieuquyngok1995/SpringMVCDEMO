@@ -13,37 +13,36 @@ import springMVC.model.PaginationResult;
 import springMVC.model.ProductInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
- 
+
 // Transactional for Hibernate
 @Transactional
 public class ProductDAOImpl implements ProductDAO {
- 
+
     @Autowired
     private SessionFactory sessionFactory;
- 
- 
+
     public Product findProduct(String code) {
         Session session = sessionFactory.getCurrentSession();
         Criteria crit = session.createCriteria(Product.class);
         crit.add(Restrictions.eq("code", code));
         return (Product) crit.uniqueResult();
     }
- 
- 
+
     public ProductInfo findProductInfo(String code) {
         Product product = this.findProduct(code);
         if (product == null) {
             return null;
         }
-        return new ProductInfo(product.getCode(), product.getName(),product.getAddres(),product.getDescribe(),product.getStatus(),product.getType());
+        return new ProductInfo(product.getCode(), product.getName(),
+                product.getAddres(), product.getDescribe(), product.getStatus(),
+                product.getType());
     }
- 
- 
+
     public void save(ProductInfo productInfo) {
         String code = productInfo.getCode();
- 
+
         Product product = null;
- 
+
         boolean isNew = false;
         if (code != null) {
             product = this.findProduct(code);
@@ -59,7 +58,7 @@ public class ProductDAOImpl implements ProductDAO {
         product.setDescribe(productInfo.getDescribe());
         product.setStatus(productInfo.getStatus());
         product.setType(productInfo.getType());
- 
+
         if (productInfo.getFileData() != null) {
             byte[] image = productInfo.getFileData().getBytes();
             if (image != null && image.length > 0) {
@@ -73,12 +72,12 @@ public class ProductDAOImpl implements ProductDAO {
         // Nếu có lỗi tại DB, ngoại lệ sẽ ném ra ngay lập tức
         this.sessionFactory.getCurrentSession().flush();
     }
- 
- 
-    public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage,
-            String likeName) {
+
+    public PaginationResult<ProductInfo> queryProducts(int page, int maxResult,
+            int maxNavigationPage, String likeName) {
         String sql = "Select new " + ProductInfo.class.getName() //
-                + "(p.code, p.name,p.describe,p.addres,p.status,p.type) " + " from "//
+                + "(p.code, p.name,p.describe,p.addres,p.status,p.type) "
+                + " from "//
                 + Product.class.getName() + " p ";
         if (likeName != null && likeName.length() > 0) {
             sql += " Where lower(p.name) like :likeName ";
@@ -86,17 +85,18 @@ public class ProductDAOImpl implements ProductDAO {
         sql += " order by p.createDate desc ";
         //
         Session session = sessionFactory.getCurrentSession();
- 
+
         Query query = session.createQuery(sql);
         if (likeName != null && likeName.length() > 0) {
             query.setParameter("likeName", "%" + likeName.toLowerCase() + "%");
         }
-        return new PaginationResult<ProductInfo>(query, page, maxResult, maxNavigationPage);
+        return new PaginationResult<ProductInfo>(query, page, maxResult,
+                maxNavigationPage);
     }
- 
- 
-    public PaginationResult<ProductInfo> queryProducts(int page, int maxResult, int maxNavigationPage) {
+
+    public PaginationResult<ProductInfo> queryProducts(int page, int maxResult,
+            int maxNavigationPage) {
         return queryProducts(page, maxResult, maxNavigationPage, null);
     }
-    
+
 }
